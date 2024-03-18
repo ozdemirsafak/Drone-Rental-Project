@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'home' %}">İHA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'listforuser' %}"><b>All Drone List</b></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'renteddrones' %}"><b>Drones I Rented</b></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <span class="navbar-text">
+            Username: {{ request.user.username }} 
+          </span> 
+          &nbsp;
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-danger" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="btn btn-outline-primary" href="{% url 'login' %}">Giriş</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    
+  </nav>

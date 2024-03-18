@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Düzenleme</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+   
+   <!-- Düzenleme formu buraya eklenebilir -->
+
+    <!-- Düzenleme formu buraya eklenebilir -->
+<tr>
+   
+    <td>
+        <form method="POST" action="{% url 'ihaedit_save' drone_id=drone.id %}">
+
+
+            {% csrf_token %}
+            <input type="hidden" name="drone_id" value="{{ drone.id }}">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ drone.name }}">
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" class="form-control" id="category" name="category" value="{{ drone.category }}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" name="description">{{ drone.description }}</textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="brand">Brand:</label>
+                    <input type="text" class="form-control" id="brand" name="brand" value="{{ drone.brand }}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="model">Model:</label>
+                    <input type="text" class="form-control" id="model" name="model" value="{{ drone.model }}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="weight">Weight:</label>
+                    <input type="text" class="form-control" id="weight" name="weight" value="{{ drone.weight }}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="price">Price:</label>
+                    <input type="text" class="form-control" id="price" name="price" value="{{ drone.price }}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </td>
+</tr>
+    
+    
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

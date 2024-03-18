@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management Panel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        body {
+            margin-left: 5px; /* Sayfanın solundan 5 piksel sağa kaydır */
+        }
+        
+        .navbar-brand {
+            font-weight: bold; /* Kalın yazı tipi */
+            font-size: 24px; /* Yazı boyutu */
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: bold; /* Kalın yazı tipi */
+            font-size: 18px; /* Yazı boyutu */
+        }
+
+        /* Navbar'da sağ üst köşede kullanıcı adını görüntülemek için özel stiller */
+        .navbar-text {
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 10px; /* Sağ kenardan 10 piksel içeri */
+            
+        }
+        .container {
+            margin-top: 50px;
+    }
+        .panel-text {
+            font-size: 18px;
+            line-height: 1.5;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand"href="{% url 'adminpanel' %}">İHA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'ihalist' %}">Drone List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'rentalrecords' %}">Rental Records of Members</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                  <span class="navbar-text">
+                    Admin: {{ request.user.username }} 
+                  </span> 
+                  &nbsp;
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-outline-danger" href="{% url 'logout' %}">Çıkış</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="btn btn-outline-primary" href="{% url 'login' %}">Giriş</a>
+                </li>
+                {% endif %}
+              </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <h2 class="text-center">Hoş Geldiniz Admin Yönetim Paneli'ne!</h2>
+        <div class="panel-text">
+            <p>
+                Bu yönetim paneli, İHA (İnsansız Hava Aracı) kiralama platformunun kontrolünü sağlar.
+            </p>
+            <p>
+                <strong>İHA Listesi Yönetimi:</strong> Tüm mevcut İHA'ların listesini görüntüleyin, düzenleyin, ekleyin veya silebilirsiniz. Her bir İHA'nın özelliklerini kolayca güncelleyebilir ve ekleyebilirsiniz.
+            </p>
+            <p>
+                <strong>Kiralama Kayıtları İzleme:</strong> Tüm kiralama işlemlerini takip edin. Hangi üye hangi İHA'yı ne zaman kiraladı, ne zaman iade etti gibi detaylı bilgilere erişin. Ayrıca bu kayıtları filtreleyerek veya arayarak istediğiniz bilgilere ulaşabilirsiniz.
+            </p>
+            <p>
+                Bu yönetim paneli, İHA kiralama platformunun sorunsuz ve etkili bir şekilde yönetilmesini sağlar. Herhangi bir sorunuz veya ihtiyacınız olduğunda, lütfen bizimle iletişime geçmekten çekinmeyin. İyi çalışmalar dileriz!
+            </p>
+        </div>
+        <div class="text-center mt-5">
+            <a href="https://github.com/ozdemirsafak" class="btn btn-dark mr-3" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/safakozdemir/" class="btn btn-primary" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
