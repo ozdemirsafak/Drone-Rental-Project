@@ -1,4 +1,4 @@
-# Project Title
+# Drone Rental
 
 ![1](https://github.com/ozdemirsafak/Drone-Rental-Project/assets/80720849/ab6c9f4f-8a56-471c-9a4b-7509bcdb0a13)
 
